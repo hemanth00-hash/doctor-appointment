@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Doctor Appointment System</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @media screen and (orientation: portrait) {
+            body {
+                transform: rotate(90deg);
+                transform-origin: center;
+                width: 100vh;
+                height: 100vw;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                margin-left: -50vw;
+                margin-top: -50vh;
+            }
+        }
+
+        /* Desktop sizing for dashboard */
+        @media screen and (min-width: 768px) {
+            .container {
+                max-width: 900px !important;
+                padding: 50px !important;
+            }
+
+            .doctor-selection {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 20px !important;
+            }
+
+            .doctor-card label {
+                padding: 25px !important;
+            }
+
+            .doctor-photo {
+                width: 90px !important;
+                height: 90px !important;
+            }
+
+            h1 {
+                font-size: 2.5rem !important;
+            }
+
+            h2 {
+                font-size: 1.8rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hi, Welcome to Ritzz hospital</h1>
+        <p>You are logged in!</p>
+        <h2>Book an Appointment</h2>
+        <form action="/book-appointment" method="POST">
+            <label>Select Doctor:</label>
+            <div class="doctor-selection">
+                <div class="doctor-card">
+                    <input type="radio" id="pavanjith" name="doctor" value="pavanjith" required>
+                    <label for="pavanjith">
+                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Dr. Pavanjith" class="doctor-photo">
+                        <div class="doctor-info">
+                            <h3>Dr. Pavanjith</h3>
+                            <p>Cardiologist</p>
+                            <span>Specializes in heart and cardiovascular diseases, providing comprehensive cardiac care and treatment.</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="doctor-card">
+                    <input type="radio" id="ravindra" name="doctor" value="ravindra" required>
+                    <label for="ravindra">
+                        <img src="https://picsum.photos/100/100?random=2" alt="Dr. Ravindra" class="doctor-photo">
+                        <div class="doctor-info">
+                            <h3>Dr. Ravindra</h3>
+                            <p>Psychologist</p>
+                            <span>Expert in mental health and behavioral therapy, helping patients overcome psychological challenges.</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="doctor-card">
+                    <input type="radio" id="hemanth" name="doctor" value="hemanth" required>
+                    <label for="hemanth">
+                        <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Dr. Hemanth" class="doctor-photo">
+                        <div class="doctor-info">
+                            <h3>Dr. Hemanth</h3>
+                            <p>Orthopedic Surgeon</p>
+                            <span>Focuses on musculoskeletal system and injuries, providing surgical and non-surgical treatments.</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="doctor-card">
+                    <input type="radio" id="dhanush" name="doctor" value="dhanush" required>
+                    <label for="dhanush">
+                        <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="Dr. Dhanush" class="doctor-photo">
+                        <div class="doctor-info">
+                            <h3>Dr. Dhanush</h3>
+                            <p>Dermatologist</p>
+                            <span>Specialist in skin, hair, and nail conditions, offering comprehensive dermatological care.</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <label>Select Timing:</label>
+            <div class="timing-selection">
+                <!-- Pavanjith timings -->
+                <div class="timing-card pavanjith-timing">
+                    <input type="radio" id="9am" name="timing" value="9:00 AM" required>
+                    <label for="9am">
+                        <div class="timing-info">
+                            <h4>9:00 AM</h4>
+                            <span>Morning Session</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="timing-card pavanjith-timing">
+                    <input type="radio" id="10am" name="timing" value="10:00 AM" required>
+                    <label for="10am">
+                        <div class="timing-info">
+                            <h4>10:00 AM</h4>
+                            <span>Morning Session</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="timing-card pavanjith-timing">
+                    <input type="radio" id="11am" name="timing" value="11:00 AM" required>
+                    <label for="11am">
+                        <div class="timing-info">
+                            <h4>11:00 AM</h4>
+                            <span>Morning Session</span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Ravindra timings -->
+                <div class="timing-card ravindra-timing">
+                    <input type="radio" id="12pm" name="timing" value="12:00 PM" required>
+                    <label for="12pm">
+                        <div class="timing-info">
+                            <h4>12:00 PM</h4>
+                            <span>Noon Session</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="timing-card ravindra-timing">
+                    <input type="radio" id="1pm" name="timing" value="1:00 PM" required>
+                    <label for="1pm">
+                        <div class="timing-info">
+                            <h4>1:00 PM</h4>
+                            <span>Afternoon Session</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="timing-card ravindra-timing">
+                    <input type="radio" id="2pm" name="timing" value="2:00 PM" required>
+                    <label for="2pm">
+                        <div class="timing-info">
+                            <h4>2:00 PM</h4>
+                            <span>Afternoon Session</span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Hemanth timings -->
+                <div class="timing-card hemanth-timing">
+                    <input type="radio" id="3pm" name="timing" value="3:00 PM" required>
+                    <label for="3pm">
+                        <div class="timing-info">
+                            <h4>3:00 PM</h4>
+                            <span>Afternoon Session</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="timing-card hemanth-timing">
+                    <input type="radio" id="4pm" name="timing" value="4:00 PM" required>
+                    <label for="4pm">
+                        <div class="timing-info">
+                            <h4>4:00 PM</h4>
+                            <span>Afternoon Session</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="timing-card hemanth-timing">
+                    <input type="radio" id="5pm" name="timing" value="5:00 PM" required>
+                    <label for="5pm">
+                        <div class="timing-info">
+                            <h4>5:00 PM</h4>
+                            <span>Evening Session</span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Dhanush timings -->
+                <div class="timing-card dhanush-timing">
+                    <input type="radio" id="6pm" name="timing" value="6:00 PM" required>
+                    <label for="6pm">
+                        <div class="timing-info">
+                            <h4>6:00 PM</h4>
+                            <span>Evening Session</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="timing-card dhanush-timing">
+                    <input type="radio" id="7pm" name="timing" value="7:00 PM" required>
+                    <label for="7pm">
+                        <div class="timing-info">
+                            <h4>7:00 PM</h4>
+                            <span>Evening Session</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="timing-card dhanush-timing">
+                    <input type="radio" id="8pm" name="timing" value="8:00 PM" required>
+                    <label for="8pm">
+                        <div class="timing-info">
+                            <h4>8:00 PM</h4>
+                            <span>Evening Session</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <button type="submit">Book Appointment</button>
+        </form>
+        <br>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <script>
+        // Function to show/hide timing cards based on selected doctor
+        function updateTimings() {
+            const selectedDoctor = document.querySelector('input[name="doctor"]:checked');
+            const allTimings = document.querySelectorAll('.timing-card');
+
+            // Hide all timings first
+            allTimings.forEach(card => {
+                card.style.display = 'none';
+            });
+
+            // Show timings based on selected doctor
+            if (selectedDoctor) {
+                const doctorValue = selectedDoctor.value;
+                const doctorTimings = document.querySelectorAll(`.${doctorValue}-timing`);
+                doctorTimings.forEach(card => {
+                    card.style.display = 'block';
+                });
+            }
+        }
+
+        // Add event listeners to doctor radio buttons
+        const doctorRadios = document.querySelectorAll('input[name="doctor"]');
+        doctorRadios.forEach(radio => {
+            radio.addEventListener('change', updateTimings);
+        });
+
+        // Initially hide all timings
+        document.addEventListener('DOMContentLoaded', function() {
+            const allTimings = document.querySelectorAll('.timing-card');
+            allTimings.forEach(card => {
+                card.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
